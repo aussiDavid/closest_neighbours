@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Mitch: I have an array of DateTime objects, I want to match them up into groups of 4 that are the closest to each other'
   spec.homepage      = 'https://github.com/aussidavid/closest_times'
   spec.license       = 'MIT'
+  spec.required_ruby_version = '2.6'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
