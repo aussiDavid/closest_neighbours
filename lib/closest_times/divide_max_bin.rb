@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'closest_times/divide'
+
 module ClosestTimes
   # Splits the largest bin into 2, increasing the number of bins by 1
   class DivideMaxBin
