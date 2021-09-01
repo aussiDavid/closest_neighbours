@@ -98,4 +98,4 @@ DEPENDENCIES
   simplecov-lcov (~> 0.8.0)
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
