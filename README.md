@@ -1,8 +1,24 @@
 # ClosestTimes
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/closest_times`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem takes an array of elements, groups them by their ordered closest neighbors into `n` groups.
 
-TODO: Delete this and the text above, and describe your gem
+**Origin Story:**
+
+Friend:
+
+> "here's another one for you"
+>
+> "I have an array of DateTime objects, I want to match them up into groups of 4 that are the closest to each other"
+
+Me:
+
+> _\*That's an interesting little problem. Maybe put this in a little gem\*_
+
+Later that night
+
+Me:
+
+> "Here is what I have so far..."
 
 ## Installation
 
@@ -14,25 +30,45 @@ gem 'closest_times'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install closest_times
+```bash
+gem install closest_times
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Require the gem
+
+```ruby
+require 'closest_times'
+```
+
+Call the `ClosestTimes::Times` class
+
+```ruby
+ClosestTimes::Times.new(2, [1,2,3, 4]).call
+# => [[1,2], [3, 4]]
+ClosestTimes::Times.new(3, [10.days.ago,9.days.ago, 1.day.ago]).call
+# => [[10.days.ago, 9.days.ago], [1.day.ago]]
+
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec guard` to run tests when a file changes.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/closest_times. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+To experiment with that code, run `bin/console` for an interactive prompt.
+
+Bug reports and pull requests are welcome on GitHub at <https://github.com/aussidavid/closest_times>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
