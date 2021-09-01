@@ -1,52 +1,41 @@
 # frozen_string_literal: true
 
 require 'closest_times/bins'
+require 'closest_times/divide_max_bin'
 
 module ClosestTimes
   # Match array of times up into groups that are the closest to each other
   class Times
-    def initialize(groups = 1, times = [])
+    def initialize(groups = 1, array = [])
       @groups = groups
-      @times = times
+      @array = array
     end
 
     def call
       raise StandardError if groups < 1
+      return fillers if array.empty?
 
-      return [sorted_times] if groups == 1
-      return identity + fillers if groups >= times.length
-      return bins if groups == bins.size
-      return bins.flatten(1).each_slice(slice_size).to_a if groups < bins.size
-
-      bins + fillers
+      divide_bins + fillers
     end
 
     private
 
-    attr_reader :groups, :times
+    attr_reader :groups, :array
 
     def fillers
       Array.new(number_of_fillers, [])
     end
 
     def number_of_fillers
-      [0, groups - times.length].max
+      [0, groups - array.length].max
     end
 
-    def sorted_times
-      @sorted_times ||= times.sort
-    end
-
-    def slice_size
-      (times.length / groups.to_f).ceil
-    end
-
-    def identity
-      sorted_times.map { |item| [item] }
+    def divide_bins
+      (groups - bins.size).times.reduce(bins) { |acc, _cur| ClosestTimes::DivideMaxBin.new(acc).call }
     end
 
     def bins
-      @bins ||= ClosestTimes::Bins.new(times).call
+      @bins ||= ClosestTimes::Bins.new(array).call
     end
   end
 end
