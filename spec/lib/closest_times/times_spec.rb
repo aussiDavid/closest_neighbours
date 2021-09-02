@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ClosestTimes::Times do
+RSpec.describe Times do
   describe '#call' do
     it { expect { described_class.new(-1, []).call }.to raise_error ClosestTimes::InsuffcientGroupsError }
     it { expect { described_class.new(0, []).call }.to raise_error ClosestTimes::InsuffcientGroupsError }
