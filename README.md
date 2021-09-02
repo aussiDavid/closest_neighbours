@@ -66,7 +66,7 @@ Require the gem
 require 'closest_times'
 ```
 
-Call the `ClosestTimes::Ordered` class
+Use the module:
 
 ```ruby
 ClosestTimes.ordered(2, [1, 2, 3, 4])
