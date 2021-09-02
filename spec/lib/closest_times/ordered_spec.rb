@@ -22,9 +22,18 @@ RSpec.describe ClosestTimes::Ordered do
     it { expect(described_class.new(2, [1, 2, 10]).call).to eq [[1, 2], [10]] }
     it { expect(described_class.new(4, [1, 2, 3, 4]).call).to eq [[1], [2], [3], [4]] }
     it { expect(described_class.new(2, [1, 2, 3]).call).to eq [[1, 2], [3]] }
-    # it { expect(described_class.new(2, [1, 2, 3, 4]).call).to eq [[1, 2], [3, 4]] }
-    # it { expect(described_class.new(2, (1..5).to_a).call).to eq [(1..3).to_a, [4, 5]] }
-    # it { expect(described_class.new(2, (1..5).to_a.reverse).call).to eq [(1..3).to_a, [4, 5]] }
+    it {
+      pending('Not implemented. Contiguous numbers with the same differences are not supported')
+      expect(described_class.new(2, [1, 2, 3, 4]).call).to eq [[1, 2], [3, 4]]
+    }
+    it {
+      pending('Not implemented. Contiguous numbers with the same differences are not supported')
+      expect(described_class.new(2, (1..5).to_a).call).to eq [(1..3).to_a, [4, 5]]
+    }
+    it {
+      pending('Not implemented. Contiguous numbers with the same differences are not supported')
+      expect(described_class.new(2, (1..5).to_a.reverse).call).to eq [(1..3).to_a, [4, 5]]
+    }
     it { expect(described_class.new(2, [1, 1, 1]).call).to eq [[1, 1], [1]] }
     it { expect(described_class.new(2, [2, 1, 2, 1]).call).to eq [[1, 1], [2, 2]] }
     it { expect(described_class.new(2, [1, 2, 3, 10]).call).to eq [[1, 2, 3], [10]] }
