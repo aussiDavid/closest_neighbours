@@ -69,9 +69,9 @@ require 'closest_times'
 Call the `ClosestTimes::Ordered` class
 
 ```ruby
-ClosestTimes::Ordered.new(2, [1, 2, 3, 4]).call
+ClosestTimes.ordered(2, [1, 2, 3, 4])
 # => [[1, 2], [3, 4]]
-ClosestTimes::Ordered.new(3, [10.days.ago, 9.days.ago, 1.day.ago]).call
+ClosestTimes.ordered(3, [10.days.ago, 9.days.ago, 1.day.ago])
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```
