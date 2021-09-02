@@ -51,9 +51,9 @@ require 'closest_times'
 Call the `ClosestTimes::Times` class
 
 ```ruby
-ClosestTimes::Times.new(2, [1,2,3, 4]).call
-# => [[1,2], [3, 4]]
-ClosestTimes::Times.new(3, [10.days.ago,9.days.ago, 1.day.ago]).call
+ClosestTimes::Times.new(2, [1, 2, 3, 4]).call
+# => [[1, 2], [3, 4]]
+ClosestTimes::Times.new(3, [10.days.ago, 9.days.ago, 1.day.ago]).call
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```
