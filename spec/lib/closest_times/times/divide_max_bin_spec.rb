@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'closest_times/divide_max_bin'
+require 'closest_times/times/divide_max_bin'
 
-RSpec.describe ClosestTimes::DivideMaxBin do
+RSpec.describe DivideMaxBin do
   describe '#call' do
     it { expect(described_class.new([[]]).call).to eq [[]] }
     it { expect(described_class.new([[1, 2]]).call).to eq [[1], [2]] }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'closest_times/bins'
-require 'closest_times/divide_max_bin'
+require 'closest_times/times/bins'
+require 'closest_times/times/divide_max_bin'
 
 module ClosestTimes
   # Match array of times up into groups that are the closest to each other
@@ -12,7 +12,10 @@ module ClosestTimes
     end
 
     def call
-      raise StandardError if groups < 1
+      raise NonIntegerGroupsError unless groups.is_a? Integer
+      raise NonEnumberableArgumentError unless array.is_a? Enumerable
+      raise InsuffcientGroupsError if groups < 1
+
       return fillers if array.empty?
 
       divide_bins + fillers
@@ -31,11 +34,11 @@ module ClosestTimes
     end
 
     def divide_bins
-      (groups - bins.size).times.reduce(bins) { |acc, _cur| ClosestTimes::DivideMaxBin.new(acc).call }
+      (groups - bins.size).times.reduce(bins) { |acc, _cur| DivideMaxBin.new(acc).call }
     end
 
     def bins
-      @bins ||= ClosestTimes::Bins.new(array).call
+      @bins ||= Bins.new(array).call
     end
   end
 end

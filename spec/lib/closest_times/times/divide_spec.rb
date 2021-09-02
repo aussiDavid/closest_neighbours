@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'closest_times/divide'
+require 'closest_times/times/divide'
 
-RSpec.describe ClosestTimes::Divide do
+RSpec.describe Divide do
   describe '#call' do
     it { expect(described_class.new(0, []).call).to eq [[]] }
     it { expect(described_class.new(1, []).call).to eq [[]] }
