@@ -20,18 +20,21 @@ Me:
 
 > "Here is what I have so far..."
 
-The algorithm to determine the closest naighbour is to look at the element before and after to determine which one is closer.
+The algorithm to determine the closest neighbor is to look at the element before and after to determine which one is closer.
 
 E.g.
 Given the sequence
+
 ```plain
 input:        1   5    20
                \ / \  /
-seperated by:   4   14
+separated by:   4   14
 ```
-`1` and `5` (seperated by 4) are closer together than `5` and `20` (seperated by 14), so `5` is grouped with `1`
 
-**groups:** 
+`1` and `5` (separated by 4) are closer together than `5` and `20` (separated by 14), so `5` is grouped with `1`
+
+**groups:**
+
 1. `1`, `5`
 2. `20`
 
@@ -63,12 +66,12 @@ Require the gem
 require 'closest_times'
 ```
 
-Call the `ClosestTimes::Times` class
+Call the `ClosestTimes::Ordered` class
 
 ```ruby
-ClosestTimes::Times.new(2, [1, 2, 3, 4]).call
+ClosestTimes::Ordered.new(2, [1, 2, 3, 4]).call
 # => [[1, 2], [3, 4]]
-ClosestTimes::Times.new(3, [10.days.ago, 9.days.ago, 1.day.ago]).call
+ClosestTimes::Ordered.new(3, [10.days.ago, 9.days.ago, 1.day.ago]).call
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```
