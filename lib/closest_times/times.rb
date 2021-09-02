@@ -13,7 +13,7 @@ class Times
   def call
     raise ClosestTimes::NonIntegerGroupsError unless groups.is_a? Integer
     raise ClosestTimes::NonEnumberableArgumentError unless array.is_a? Enumerable
-    raise ClosestTimes::InsuffcientGroupsError if groups < 1
+    raise ClosestTimes::InsufficientGroupsError if groups < 1
 
     return fillers if array.empty?
 

@@ -2,10 +2,14 @@
 
 require 'closest_times/version'
 
+# Services
 require 'closest_times/times'
 require 'closest_times/ordered'
 
-require 'closest_times/errors'
+# Errors
+require 'closest_times/errors/non_enumberable_argument_error'
+require 'closest_times/errors/insufficient_groups_error'
+require 'closest_times/errors/non_integer_groups_error'
 
 # Takes an array of elements, groups them by their ordered closest neighbors into n groups
 module ClosestTimes

@@ -24,7 +24,7 @@ class Ordered
   def validate!
     raise ClosestTimes::NonIntegerGroupsError unless groups.is_a? Integer
     raise ClosestTimes::NonEnumberableArgumentError unless data.is_a? Enumerable
-    raise ClosestTimes::InsuffcientGroupsError if groups < 1
+    raise ClosestTimes::InsufficientGroupsError if groups < 1
   end
 
   def size
