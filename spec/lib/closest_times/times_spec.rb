@@ -2,6 +2,7 @@
 
 RSpec.describe ClosestTimes::Times do
   describe '#call' do
+    it { expect { described_class.new(-1, []).call }.to raise_error StandardError }
     it { expect { described_class.new(0, []).call }.to raise_error StandardError }
     it { expect(described_class.new(1, []).call).to eq [[]] }
     it { expect(described_class.new(2, []).call).to eq [[], []] }
