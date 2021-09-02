@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Ordered do
+RSpec.describe ClosestTimes::Ordered do
   describe '#call' do
     it { expect { described_class.new(-1, []).call }.to raise_error ClosestTimes::InsufficientGroupsError }
     it { expect { described_class.new(0, []).call }.to raise_error ClosestTimes::InsufficientGroupsError }

@@ -2,7 +2,7 @@
 
 require 'closest_times/times/bins'
 
-RSpec.describe Bins do
+RSpec.describe ClosestTimes::Bins do
   describe '#call' do
     it { expect(described_class.new([]).call).to eq [[]] }
     it { expect(described_class.new([1]).call).to eq [[1]] }
