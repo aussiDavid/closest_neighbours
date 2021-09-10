@@ -12,7 +12,7 @@ Friend:
 
 Me:
 
-> _\*That's an interesting problem. Maybe put this in a little gem\*_
+> :thinking: _\*That's an interesting problem. Maybe put this in a little gem\*_
 
 Later that night
 
