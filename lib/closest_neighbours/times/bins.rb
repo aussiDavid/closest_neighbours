@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ClosestTimes
+module ClosestNeighbours
   # Group an array into bins when seperated by a significant jump
   class Bins
     def initialize(array = [])

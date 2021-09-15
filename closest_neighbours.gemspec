@@ -2,17 +2,17 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'closest_times/version'
+require 'closest_neighbours/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'closest_times'
-  spec.version       = ClosestTimes::VERSION
+  spec.name          = 'closest_neighbours'
+  spec.version       = ClosestNeighbours::VERSION
   spec.authors       = ['David Milanese']
   spec.email         = ['milanese.david@gmail.com']
 
   spec.summary       = 'Takes an array of elements, groups them by their ordered closest neighbors into n groups'
   spec.description   = 'This gem takes an array of elements, groups them by their ordered closest neighbors into n groups.'
-  spec.homepage      = 'https://github.com/aussidavid/closest_times'
+  spec.homepage      = 'https://github.com/aussidavid/closest_neighbours'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.7'
 

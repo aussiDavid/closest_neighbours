@@ -16,7 +16,7 @@ SimpleCov.start do
                                                      ])
 end
 
-require 'closest_times'
+require 'closest_neighbours'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

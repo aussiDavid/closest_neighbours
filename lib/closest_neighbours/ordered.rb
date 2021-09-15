@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ClosestTimes
+module ClosestNeighbours
   # Match array of times up into groups that are the closest to each other
   class Ordered
     def initialize(groups = 1, data = [])

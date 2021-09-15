@@ -1,4 +1,4 @@
-# ClosestTimes
+# ClosestNeighbours
 
 This gem takes an array of elements, groups them by their ordered closest neighbors into `n` groups.
 
@@ -43,7 +43,7 @@ separated by:   4   14
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'closest_times'
+gem 'closest_neighbours'
 ```
 
 And then execute:
@@ -55,7 +55,7 @@ bundle
 Or install it yourself as:
 
 ```bash
-gem install closest_times
+gem install closest_neighbours
 ```
 
 ## Usage
@@ -63,15 +63,15 @@ gem install closest_times
 Require the gem
 
 ```ruby
-require 'closest_times'
+require 'closest_neighbours'
 ```
 
 Use the module:
 
 ```ruby
-ClosestTimes.ordered(2, [1, 2, 3, 4])
+ClosestNeighbours.ordered(2, [1, 2, 3, 4])
 # => [[1, 2], [3, 4]]
-ClosestTimes.ordered(3, [10.days.ago, 9.days.ago, 1.day.ago])
+ClosestNeighbours.ordered(3, [10.days.ago, 9.days.ago, 1.day.ago])
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```
@@ -130,7 +130,7 @@ This will create a git tag for the version, push git commits and tags, and push 
 
 To experiment with that code, run `bin/console` for an interactive prompt.
 
-Bug reports and pull requests are welcome on GitHub at <https://github.com/aussidavid/closest_times>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/aussidavid/closest_neighbours>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -138,4 +138,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the ClosestTimes project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/closest_times/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ClosestNeighbours project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/closest_neighbours/blob/master/CODE_OF_CONDUCT.md).

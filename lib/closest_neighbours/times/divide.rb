@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ClosestTimes
+module ClosestNeighbours
   # Splits an evenly array into a specified number of groups
   class Divide
     def initialize(groups = 1, array = [])

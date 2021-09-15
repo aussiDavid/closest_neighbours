@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ClosestTimes
+module ClosestNeighbours
   # Error when given an non Integer value
   class NonIntegerGroupsError < StandardError
   end

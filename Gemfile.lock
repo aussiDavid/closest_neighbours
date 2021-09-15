@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    closest_times (0.1.0)
+    closest_neighbours (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -89,7 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.1.4)
-  closest_times!
+  closest_neighbours!
   guard-rspec (~> 4.7.3)
   rake (~> 10.0)
   rspec (~> 3.0)

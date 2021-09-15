@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'closest_times/times/bins'
-require 'closest_times/times/divide_max_bin'
+require 'closest_neighbours/times/bins'
+require 'closest_neighbours/times/divide_max_bin'
 
-module ClosestTimes
+module ClosestNeighbours
   # Match array of times up into groups that are the closest to each other
   class Times
     def initialize(groups = 1, array = [])

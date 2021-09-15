@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ClosestTimes
+module ClosestNeighbours
   # Error when an insufficient number of groups specified
   class InsufficientGroupsError < StandardError
   end

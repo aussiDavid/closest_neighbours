@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'closest_times/times/bins'
+require 'closest_neighbours/times/bins'
 
-RSpec.describe ClosestTimes::Bins do
+RSpec.describe ClosestNeighbours::Bins do
   describe '#call' do
     it { expect(described_class.new([]).call).to eq [[]] }
     it { expect(described_class.new([1]).call).to eq [[1]] }
