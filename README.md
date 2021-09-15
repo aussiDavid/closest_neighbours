@@ -69,9 +69,9 @@ require 'closest_neighbours'
 Use the module:
 
 ```ruby
-ClosestNeighbours.ordered(2, [1, 2, 3, 4])
+ClosestNeighbours.group(2, [1, 2, 3, 4])
 # => [[1, 2], [3, 4]]
-ClosestNeighbours.ordered(3, [10.days.ago, 9.days.ago, 1.day.ago])
+ClosestNeighbours.group(3, [10.days.ago, 9.days.ago, 1.day.ago])
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```

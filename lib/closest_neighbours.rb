@@ -15,7 +15,7 @@ module ClosestNeighbours
   #
   # @example
   #
-  #   ClosestNeighbours.ordered(2, [10, 2, 11, 5])
+  #   ClosestNeighbours.group(2, [10, 2, 11, 5])
   #   # => [[2, 5], [10, 11]]
   #
   # @param [Integer] groups The number of groups to create
@@ -23,7 +23,7 @@ module ClosestNeighbours
   #
   # @return [Array] An array of `groups` groups
   #
-  def self.ordered(groups, data)
+  def self.group(groups, data)
     Ordered.new(groups, data).call
   end
 end
