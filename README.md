@@ -1,5 +1,7 @@
 # ClosestNeighbours
 
+[![Gem Version](https://badge.fury.io/rb/closest_neighbours.svg)](https://badge.fury.io/rb/closest_neighbours)
+
 This gem takes an array of elements, groups them by their ordered closest neighbors into `n` groups.
 
 **Origin Story:**
