@@ -42,6 +42,7 @@ RSpec.describe ClosestNeighbours::Ordered do
     it { expect(described_class.new(3, [1, 2, 5, 20, 22]).call).to eq [[1, 2], [5], [20, 22]] }
     it { expect(described_class.new(3, Set[1, 2, 5, 20, 22]).call).to eq [[1, 2], [5], [20, 22]] }
     it { expect(described_class.new(3, [1, 2, 5, 20, 22].to_enum).call).to eq [[1, 2], [5], [20, 22]] }
+    it { expect(described_class.new(2, (1..10_000).to_a + (20_000..30_000).to_a).call).to eq [(1..10_000).to_a, (20_000..30_000).to_a] }
 
     context 'when using time objects' do
       let(:jan_dates) { [Time.new(2000, 1, 1), Time.new(2000, 1, 13)] }
