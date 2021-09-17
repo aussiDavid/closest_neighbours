@@ -1,6 +1,7 @@
 # ClosestNeighbours
 
 [![Gem Version](https://badge.fury.io/rb/closest_neighbours.svg)](https://badge.fury.io/rb/closest_neighbours)
+[![Build Status](https://app.travis-ci.com/aussiDavid/closest_neighbours.svg?branch=main)](https://app.travis-ci.com/aussiDavid/closest_neighbours)
 
 This gem takes an array of elements, groups them by their ordered closest neighbors into `n` groups.
 
@@ -71,11 +72,17 @@ require 'closest_neighbours'
 Use the module:
 
 ```ruby
-ClosestNeighbours.group(2, [1, 2, 3, 4])
+ClosestNeighbours.group(2, [1, 4, 3, 2])
 # => [[1, 2], [3, 4]]
 ClosestNeighbours.group(2, [10.days.ago, 9.days.ago, 1.day.ago])
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
+```
 
+`ClosestNeighbours.ordered_group` allows you to squeeze additional performance out of the module by providing an ordered set of inputs. If in doubt, use `ClosestNeighbours.group`.
+
+```ruby
+ClosestNeighbours.ordered_group(2, [1, 2, 3, 4])
+# => [[1, 2], [3, 4]]
 ```
 
 ## Development

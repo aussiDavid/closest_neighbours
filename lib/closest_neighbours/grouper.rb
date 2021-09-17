@@ -2,25 +2,27 @@
 
 module ClosestNeighbours
   # Split an Enumerable into specified number of groups containing the closest elements in each group.
-  class Ordered
-    def initialize(groups = 1, data = [])
-      @groups = groups
-      @data = data
+  class Grouper
+    def initialize(orderer: DefaultOrder.new)
+      @orderer = orderer
     end
 
-    def call
+    def call(groups = 1, data = [])
+      @groups = groups
+      @data = data
+
       validate!
 
       if groups >= size
         wraped_data + blanks
       else
-        ranges.map { |range| sorted_data[range] }
+        ranges.map { |range| ordered_data[range] }
       end
     end
 
     private
 
-    attr_reader :groups, :data
+    attr_reader :groups, :data, :orderer
 
     def validate!
       raise NonIntegerGroupsError unless groups.is_a? Integer
@@ -30,7 +32,7 @@ module ClosestNeighbours
     end
 
     def size
-      data.to_a.size
+      data.count
     end
 
     def blanks
@@ -42,7 +44,7 @@ module ClosestNeighbours
     end
 
     def wraped_data
-      sorted_data.map { |x| [x] }
+      ordered_data.map { |x| [x] }
     end
 
     def ranges
@@ -60,7 +62,7 @@ module ClosestNeighbours
     end
 
     def differences_between_each_pair
-      sorted_data.each_cons(2).map { |(a, b)| b - a }
+      ordered_data.each_cons(2).map { |(a, b)| b - a }
     end
 
     def differences_with_indices
@@ -70,8 +72,8 @@ module ClosestNeighbours
         .reverse
     end
 
-    def sorted_data
-      @sorted_data ||= data.sort
+    def ordered_data
+      @ordered_data ||= orderer.call(data)
     end
 
     def comparable_elements?
