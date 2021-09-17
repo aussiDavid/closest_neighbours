@@ -2,7 +2,7 @@
 
 module ClosestNeighbours
   # Split an Enumerable into specified number of groups containing the closest elements in each group.
-  class Ordered
+  class Unordered
     def initialize(groups = 1, data = [])
       @groups = groups
       @data = data

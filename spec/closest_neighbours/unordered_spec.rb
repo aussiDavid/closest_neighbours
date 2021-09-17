@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ClosestNeighbours::Ordered do
+RSpec.describe ClosestNeighbours::Unordered do
   describe '#call' do
     it { expect { described_class.new(-1, []).call }.to raise_error ClosestNeighbours::InsufficientGroupsError }
     it { expect { described_class.new(0, []).call }.to raise_error ClosestNeighbours::InsufficientGroupsError }

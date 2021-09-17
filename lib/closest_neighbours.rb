@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'closest_neighbours/version'
-require 'closest_neighbours/ordered'
+require 'closest_neighbours/unordered'
 
 # Errors
 require 'closest_neighbours/errors/non_enumberable_argument_error'
@@ -25,6 +25,6 @@ module ClosestNeighbours
   # @return [Array] An array of `groups` groups
   #
   def self.group(groups, data)
-    Ordered.new(groups, data).call
+    Unordered.new(groups, data).call
   end
 end
