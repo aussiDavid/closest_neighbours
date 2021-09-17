@@ -8,6 +8,7 @@ RSpec.describe ClosestNeighbours::Ordered do
     it { expect { described_class.new(1.0, []).call }.to raise_error ClosestNeighbours::NonIntegerGroupsError }
     it { expect { described_class.new(1, '[]').call }.to raise_error ClosestNeighbours::NonEnumberableArgumentError }
     it { expect { described_class.new(1, 1).call }.to raise_error ClosestNeighbours::NonEnumberableArgumentError }
+    it { expect { described_class.new(1, [nil, 1]).call }.to raise_error ClosestNeighbours::IncomparableElementError }
     it { expect(described_class.new(1, []).call).to eq [[]] }
     it { expect(described_class.new(2, []).call).to eq [[], []] }
     it { expect(described_class.new(3, []).call).to eq [[], [], []] }
@@ -41,6 +42,7 @@ RSpec.describe ClosestNeighbours::Ordered do
     it { expect(described_class.new(3, [1, 2, 20, 25, 50]).call).to eq [[1, 2], [20, 25], [50]] }
     it { expect(described_class.new(3, [1, 2, 5, 20, 22]).call).to eq [[1, 2], [5], [20, 22]] }
     it { expect(described_class.new(3, Set[1, 2, 5, 20, 22]).call).to eq [[1, 2], [5], [20, 22]] }
+    it { expect(described_class.new(3, [1, 2, 5, 20, 22].to_enum).call).to eq [[1, 2], [5], [20, 22]] }
     it { expect(described_class.new(3, [1, 2, 5, 20, 22].to_enum).call).to eq [[1, 2], [5], [20, 22]] }
     it { expect(described_class.new(2, (1..10_000).to_a + (20_000..30_000).to_a).call).to eq [(1..10_000).to_a, (20_000..30_000).to_a] }
 
