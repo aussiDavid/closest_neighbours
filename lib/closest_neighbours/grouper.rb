@@ -3,13 +3,14 @@
 module ClosestNeighbours
   # Split an Enumerable into specified number of groups containing the closest elements in each group.
   class Grouper
-    def initialize(groups = 1, data = [], orderer: DefaultOrder.new)
-      @groups = groups
-      @data = data
+    def initialize(orderer: DefaultOrder.new)
       @orderer = orderer
     end
 
-    def call
+    def call(groups = 1, data = [])
+      @groups = groups
+      @data = data
+
       validate!
 
       if groups >= size

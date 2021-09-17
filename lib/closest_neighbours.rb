@@ -29,7 +29,7 @@ module ClosestNeighbours
   # @return [Array] An array of `groups` groups
   #
   def self.group(groups, data)
-    Grouper.new(groups, data, orderer: SortedOrder.new).call
+    Grouper.new(orderer: SortedOrder.new).call(groups, data)
   end
 
   #
@@ -46,6 +46,6 @@ module ClosestNeighbours
   # @return [Array] An array of `groups` groups
   #
   def self.ordered_group(groups, ordered_data)
-    Grouper.new(groups, ordered_data, orderer: DefaultOrder.new).call
+    Grouper.new(orderer: DefaultOrder.new).call(groups, ordered_data)
   end
 end
