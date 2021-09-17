@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ClosestNeighbours
-  # Match array of times up into groups that are the closest to each other
+  # Split an Enumerable into specified number of groups containing the closest elements in each group.
   class Ordered
     def initialize(groups = 1, data = [])
       @groups = groups
@@ -26,6 +26,7 @@ module ClosestNeighbours
       raise NonIntegerGroupsError unless groups.is_a? Integer
       raise NonEnumberableArgumentError unless data.is_a? Enumerable
       raise InsufficientGroupsError if groups < 1
+      raise IncomparableElementError unless comparable_elements?
     end
 
     def size
@@ -71,6 +72,10 @@ module ClosestNeighbours
 
     def sorted_data
       @sorted_data ||= data.sort
+    end
+
+    def comparable_elements?
+      data.all? { |e| data.first <=> e }
     end
   end
 end

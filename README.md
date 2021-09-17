@@ -73,7 +73,7 @@ Use the module:
 ```ruby
 ClosestNeighbours.group(2, [1, 2, 3, 4])
 # => [[1, 2], [3, 4]]
-ClosestNeighbours.group(3, [10.days.ago, 9.days.ago, 1.day.ago])
+ClosestNeighbours.group(2, [10.days.ago, 9.days.ago, 1.day.ago])
 # => [[10.days.ago, 9.days.ago], [1.day.ago]]
 
 ```
