@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 require 'closest_neighbours/version'
-require 'closest_neighbours/ordered'
-require 'closest_neighbours/unordered'
+require 'closest_neighbours/grouper'
+
+# Plugable Roles
+require 'closest_neighbours/orderers/sorted_order'
+require 'closest_neighbours/orderers/default_order'
 
 # Errors
 require 'closest_neighbours/errors/non_enumberable_argument_error'
@@ -26,7 +29,7 @@ module ClosestNeighbours
   # @return [Array] An array of `groups` groups
   #
   def self.group(groups, data)
-    Ordered.new(groups, data).call
+    Grouper.new(groups, data, orderer: SortedOrder.new).call
   end
 
   #
@@ -34,7 +37,7 @@ module ClosestNeighbours
   #
   # @example
   #
-  #   ClosestNeighbours.group(2, [10, 2, 11, 5])
+  #   ClosestNeighbours.ordered_group(2, [2, 5, 10, 11])
   #   # => [[2, 5], [10, 11]]
   #
   # @param [Integer] groups The number of groups to create
@@ -43,6 +46,6 @@ module ClosestNeighbours
   # @return [Array] An array of `groups` groups
   #
   def self.ordered_group(groups, ordered_data)
-    Ordered.new(groups, ordered_data).call
+    Grouper.new(groups, ordered_data, orderer: DefaultOrder.new).call
   end
 end
