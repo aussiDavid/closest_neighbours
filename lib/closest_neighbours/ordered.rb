@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ClosestNeighbours
-  # Match array of times up into groups that are the closest to each other
+  # Split an Enumerable into specified number of groups containing the closest elements in each group.
   class Ordered
     def initialize(groups = 1, data = [])
       @groups = groups
