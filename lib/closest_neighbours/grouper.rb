@@ -47,9 +47,10 @@ module ClosestNeighbours
     end
 
     def ranges
-      [0..indexes[0]] +
-        (indexes + [size - 1]).each_cons(2)
-                              .map { |(left, right)| (left + 1)..right }
+      [Range.new(nil, indexes.first)] +
+        indexes.each_cons(2)
+               .map { |(left, right)| Range.new(left + 1, right) } +
+        [Range.new(indexes.last + 1, nil)]
     end
 
     def indexes
