@@ -89,7 +89,7 @@ module ClosestNeighbours
     end
 
     def comparable_elements?
-      data.all? { |e| data.first <=> e }
+      data.all? { |e| e <=> data.first }
     end
   end
 end
