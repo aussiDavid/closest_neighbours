@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'closest_neighbours/indexer'
+
 module ClosestNeighbours
   # Split an Enumerable into specified number of groups containing the closest elements in each group.
   class Grouper
@@ -8,76 +10,52 @@ module ClosestNeighbours
     end
 
     def call(groups = 1, data = [])
-      @groups = groups
-      @data = data
+      raise NonIntegerGroupsError unless groups.is_a? Integer
+      raise NonEnumberableArgumentError unless data.is_a? Enumerable
+      raise InsufficientGroupsError if groups < 1
+      raise IncomparableElementError unless data.all? { |e| e <=> data.first }
 
-      validate!
-
-      if groups >= size
-        wraped_data + blanks
-      else
-        ranges.map { |range| ordered_data[range] }
-      end
+      GrouperHelper.new(groups, orderer.call(data)).call
     end
 
     private
 
-    attr_reader :groups, :data, :orderer
+    attr_reader :orderer
 
-    def validate!
-      raise NonIntegerGroupsError unless groups.is_a? Integer
-      raise NonEnumberableArgumentError unless data.is_a? Enumerable
-      raise InsufficientGroupsError if groups < 1
-      raise IncomparableElementError unless comparable_elements?
-    end
+    # Helper class to index data and extract ranges from an enumberble
+    class GrouperHelper
+      def initialize(groups, data)
+        @groups = groups
+        @data = data
+      end
 
-    def size
-      data.count
-    end
+      def call
+        if groups == 1
+          [data]
+        elsif groups >= data.count
+          cells + blanks
+        else
+          ranges.map { |range| data[range] }
+        end
+      end
 
-    def blanks
-      Array.new(number_of_blanks, [])
-    end
+      private
 
-    def number_of_blanks
-      [0, groups - size].max
-    end
+      attr_reader :groups, :data
 
-    def wraped_data
-      ordered_data.map { |x| [x] }
-    end
+      def cells
+        data.map { |x| [x] }
+      end
 
-    def ranges
-      [0..indexes[0]] +
-        (indexes << size).each_cons(2)
-                         .map { |(left, right)| (left + 1)..right }
-    end
+      def blanks
+        Array.new([0, groups - data.count].max, [])
+      end
 
-    def indexes
-      @indexes ||= differences_with_indices
-                   .lazy
-                   .map(&:last)
-                   .first(groups - 1)
-                   .sort
-    end
-
-    def differences_between_each_pair
-      ordered_data.each_cons(2).map { |(a, b)| b - a }
-    end
-
-    def differences_with_indices
-      differences_between_each_pair
-        .map.with_index { |x, i| [x, i] }
-        .sort
-        .reverse
-    end
-
-    def ordered_data
-      @ordered_data ||= orderer.call(data)
-    end
-
-    def comparable_elements?
-      data.all? { |e| data.first <=> e }
+      def ranges
+        Indexer.new(groups, data).call
+               .each_cons(2)
+               .map { |(left, right)| left...right }
+      end
     end
   end
 end

@@ -14,6 +14,7 @@ SimpleCov.start do
                                                        SimpleCov::Formatter::LcovFormatter,
                                                        SimpleCov::Formatter::HTMLFormatter
                                                      ])
+  SimpleCov.minimum_coverage 100
 end
 
 require 'closest_neighbours'
