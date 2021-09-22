@@ -11,7 +11,7 @@ module ClosestNeighbours
       @groups = groups
       @data = data
 
-      validate!
+      validate
 
       if groups >= size
         individual_elements + blanks
@@ -24,7 +24,7 @@ module ClosestNeighbours
 
     attr_reader :groups, :data, :orderer
 
-    def validate!
+    def validate
       raise NonIntegerGroupsError unless groups.is_a? Integer
       raise NonEnumberableArgumentError unless data.is_a? Enumerable
       raise InsufficientGroupsError if groups < 1
