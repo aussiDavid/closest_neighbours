@@ -64,12 +64,12 @@ module ClosestNeighbours
     end
 
     def differences_between_each_pair
-      ordered_data.each_cons(2).map { |(a, b)| b - a }
+      ordered_data.lazy.each_cons(2).map { |(lower, higher)| higher - lower }
     end
 
     def differences_with_indices
       differences_between_each_pair
-        .map.with_index { |x, i| [x, i] }
+        .with_index
         .sort
         .reverse
     end
