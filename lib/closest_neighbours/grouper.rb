@@ -13,6 +13,8 @@ module ClosestNeighbours
 
       validate
 
+      return [ordered_data] if groups == 1
+
       if groups >= size
         individual_elements + blanks
       else
