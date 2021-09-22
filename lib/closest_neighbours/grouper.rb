@@ -14,7 +14,7 @@ module ClosestNeighbours
       validate!
 
       if groups >= size
-        wraped_data + blanks
+        individual_elements + blanks
       else
         ranges.map { |range| ordered_data[range] }
       end
@@ -43,7 +43,7 @@ module ClosestNeighbours
       [0, groups - size].max
     end
 
-    def wraped_data
+    def individual_elements
       ordered_data.map { |x| [x] }
     end
 
