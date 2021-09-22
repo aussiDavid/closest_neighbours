@@ -25,19 +25,12 @@ RSpec.describe ClosestNeighbours::Grouper do
       it { expect(instance.call(2, [1, 2, 10])).to eq [[1, 2], [10]] }
       it { expect(instance.call(4, [1, 2, 3, 4])).to eq [[1], [2], [3], [4]] }
       it { expect(instance.call(2, [1, 2, 3])).to eq [[1, 2], [3]] }
-      it {
-        pending('Not implemented. Contiguous numbers with the same differences are not supported')
-        expect(instance.call(2, [1, 2, 3, 4])).to eq [[1, 2], [3, 4]]
-      }
-      it {
-        pending('Not implemented. Contiguous numbers with the same differences are not supported')
-        expect(instance.call(2, (1..5).to_a)).to eq [(1..3).to_a, [4, 5]]
-      }
-      it {
-        pending('Not implemented. Contiguous numbers with the same differences are not supported')
-        expect(instance.call(2, (1..5).to_a.reverse)).to eq [(1..3).to_a, [4, 5]]
-      }
+      it { expect(instance.call(2, [1, 2, 3, 4])).to eq [[1, 2], [3, 4]] }
+      it { expect(instance.call(2, (1..5).to_a)).to eq [(1..3).to_a, [4, 5]] }
       it { expect(instance.call(2, [1, 1, 1])).to eq [[1, 1], [1]] }
+      it { expect(instance.call(2, [1, 1, 1, 1])).to eq [[1, 1], [1, 1]] }
+      it { expect(instance.call(3, Array.new(6, 1))).to eq [[1, 1], [1, 1], [1, 1]] }
+      it { expect(instance.call(3, Array.new(5, 1))).to eq [[1, 1], [1], [1, 1]] }
       it { expect(instance.call(2, [1, 2, 3, 10])).to eq [[1, 2, 3], [10]] }
       it { expect(instance.call(3, [1, 2, 3, 10])).to eq [[1, 2], [3], [10]] }
       it { expect(instance.call(3, [1, 2, 20, 25, 50])).to eq [[1, 2], [20, 25], [50]] }
@@ -65,5 +58,6 @@ RSpec.describe ClosestNeighbours::Grouper do
 
     it { expect(instance.call(1, [2, 1])).to eq [[1, 2]] }
     it { expect(instance.call(2, [2, 1, 2, 1])).to eq [[1, 1], [2, 2]] }
+    it { expect(instance.call(2, (1..5).to_a.reverse)).to eq [(1..3).to_a, [4, 5]] }
   end
 end

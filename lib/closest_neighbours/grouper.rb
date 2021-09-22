@@ -56,11 +56,21 @@ module ClosestNeighbours
     end
 
     def indexes
-      @indexes ||= differences_with_indices
-                   .lazy
-                   .map(&:last)
-                   .first(groups - 1)
-                   .sort
+      @indexes ||= if same?
+                     (groups - 1).times.map do |group|
+                       ((group + 1) * (size - 1)) / groups
+                     end
+                   else
+                     differences_with_indices
+                       .lazy
+                       .map(&:last)
+                       .first(groups - 1)
+                       .sort
+                    end
+    end
+
+    def same?
+      differences_between_each_pair.all? { |x| x == differences_between_each_pair.first }
     end
 
     def differences_between_each_pair
