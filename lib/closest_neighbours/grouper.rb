@@ -53,21 +53,29 @@ module ClosestNeighbours
     end
 
     def indexes
-      @indexes ||= if same?
-                     (groups - 1).times.map do |group|
-                       ((group + 1) * (size - 1)) / groups
-                     end
+      @indexes ||= if evenly_spaced_elements?
+                     evenly_spaced_indexes
                    else
-                     differences_with_indices
-                       .lazy
-                       .map(&:last)
-                       .first(groups - 1)
-                       .sort
-                    end
+                     indexes_by_changes_in_distance
+                   end
     end
 
-    def same?
+    def evenly_spaced_elements?
       differences_between_each_pair.all? { |x| x == differences_between_each_pair.first }
+    end
+
+    def evenly_spaced_indexes
+      (groups - 1).times.map do |group|
+        ((group + 1) * (size - 1)) / groups
+      end
+    end
+
+    def indexes_by_changes_in_distance
+      differences_with_indices
+        .lazy
+        .map(&:last)
+        .first(groups - 1)
+        .sort
     end
 
     def differences_between_each_pair
