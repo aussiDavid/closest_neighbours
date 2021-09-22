@@ -14,12 +14,9 @@ module ClosestNeighbours
       validate
 
       return [ordered_data] if groups == 1
+      return individual_elements + blanks if groups >= size
 
-      if groups >= size
-        individual_elements + blanks
-      else
-        ranges.map { |range| ordered_data[range] }
-      end
+      ranges.map { |range| ordered_data[range] }
     end
 
     private
